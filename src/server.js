@@ -1,16 +1,15 @@
 import express,{json} from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import joi from 'joi';
-import { MongoClient, ObjectId } from 'mongodb';
-import bcrypt from 'bcrypt';
-import { v4 as uuid } from 'uuid';
+import signup from './controllers/authController.js';
 
 dotenv.config();
 
 const server = express();
 
 server.use([json(),cors()]);
+
+server.post("/sign-up", signup);
 
 const PORT=process.env.PORT || 4001;
 
