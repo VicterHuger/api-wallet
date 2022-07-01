@@ -1,15 +1,13 @@
 import express,{json} from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import signup from './controllers/authController.js';
+import router from './routes/index.js';
 
 dotenv.config();
 
 const server = express();
 
-server.use([json(),cors()]);
-
-server.post("/sign-up", signup);
+server.use([json(),cors(),router]);
 
 const PORT=process.env.PORT || 4001;
 
