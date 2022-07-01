@@ -4,6 +4,10 @@ import {db,ObjectId} from '../databases/mongo.js';
 
 async function signup(req,res){
     const user=res.locals.user;
+    const userSignUp= await db.collection('users').findOne({email:user.email});
+    if(userSignUp){
+        return res.status(409).send('Usuário Indisponível - Email já cadastrado!');
+    };
     try{
         const passwordEncrypted=bcrypt.hashSync(user.password,10);
         await db.collection('users').insertOne({...user,password:passwordEncrypted});
