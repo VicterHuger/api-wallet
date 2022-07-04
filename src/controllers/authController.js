@@ -39,4 +39,14 @@ async function signin(req,res){
     
 }
 
-export  {signup, signin}
+async function logout(req,res){
+    const token=res.locals.token;
+    try{
+        const teste=await db.collection('sessions').deleteOne({token});
+        res.sendStatus(200);
+    }catch(error){
+        res.status(500).send(error);
+    }
+}
+
+export  {signup, signin, logout}

@@ -17,6 +17,7 @@ async function validateToken(req,res,next){
     delete user.password;
 
     res.locals.user=user;
+    res.locals.token=token;
 
     next();
 }
