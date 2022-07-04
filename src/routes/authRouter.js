@@ -5,6 +5,6 @@ import verifyUserSchemasErrorMiddleware from "../middlewares/verifyUserSchemasEr
 
 const authRouter=Router();
 authRouter.post("/sign-up",userSchemaSignUpValidationMiddleware,userSchemaValidationMiddleware,verifyUserSchemasErrorMiddleware, signup);
-authRouter.post('/sign-in', userSchemaSignInValidationMiddleware,userSchemaValidationMiddleware,verifyUserSchemasErrorMiddleware,signin)
+authRouter.post('/sign-in', userSchemaSignInValidationMiddleware,userSchemaValidationMiddleware,verifyUserSchemasErrorMiddleware,signin);
 
 export default authRouter;
